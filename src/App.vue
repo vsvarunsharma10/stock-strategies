@@ -1,11 +1,5 @@
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
+  <!-- <div>
     <a href="https://vitejs.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
     </a>
@@ -13,8 +7,46 @@ import HelloWorld from './components/HelloWorld.vue'
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <HelloWorld msg="Vite + Vue" /> -->
+
+  <div class="common-layout">
+    <el-container>
+      <el-header>Header</el-header>
+      <div v-if="showLoginScreen">
+        <Login :showLoginScreen=showLoginScreen>  </Login>
+      </div>
+    </el-container>
+  </div>
 </template>
+
+
+<script>
+// This starter template is using Vue 3 <script setup> SFCs
+// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
+import HelloWorld from './components/HelloWorld.vue'
+import Login from './components/Login.vue'
+
+export default {
+    components:{Login},
+    data(){
+        return{
+          showLoginScreen: false,
+        }
+    },
+    created(){
+      this. does_token_exists(); // Check if token exists if not show login screen
+    },
+    methods:{
+      does_token_exists(){
+        let token = localStorage.getItem("token");
+        if(token && token.length > 0) this.showLoginScreen = false;
+        else this.showLoginScreen = true;
+
+      }
+    }
+}
+
+</script>
 
 <style scoped>
 .logo {
