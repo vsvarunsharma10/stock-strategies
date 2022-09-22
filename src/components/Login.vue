@@ -1,6 +1,6 @@
 <template>
 
-  <el-dialog v-model="showLoginScreen" title="Shipping address">
+  <el-dialog v-model="showLoginScreen" title="Login Screen">
     <el-form :model="form">
       <el-form-item label="Client ID" :label-width="formLabelWidth">
         <el-input v-model="form.clientID" autocomplete="off" />
@@ -62,7 +62,7 @@
           }
         )
         .then(function (response) {
-          let data = error.data.data;
+          let data = response.data.data;
           localStorage.setItem("token", data.jwtToken);
           localStorage.setItem("api_key", vm.form.apiKey);
           location.reload();

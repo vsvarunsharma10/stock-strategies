@@ -25,16 +25,16 @@ export default () => {
 	);
 
 	// Add a response interceptor
-	axios_obj.interceptors.response.use(
-		function(error) {
-			if (axios.isCancel(error)){}
-			else if (error && error.response && error.response.status == 444) { // Change status code to capture JWT token expired
-				localStorage.setItem("token", "");
-                location.reload();
-			}
-			return Promise.reject(error);
-		}
-	);
+	// axios_obj.interceptors.response.use(
+	// 	function(error) {
+	// 		if (axios.isCancel(error)){}
+	// 		else if (error && error.response && error.response.status == 444) { // Change status code to capture JWT token expired
+	// 			localStorage.setItem("token", "");
+    //             location.reload();
+	// 		}
+	// 		return Promise.reject(error);
+	// 	}
+	// );
 
 	return axios_obj;
 };

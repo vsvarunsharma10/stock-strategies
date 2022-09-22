@@ -1,22 +1,17 @@
 <template>
-  <!-- <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" /> -->
 
   <div class="common-layout">
     <el-container>
-      <el-header>Header</el-header>
-      <div v-if="showLoginScreen">
+      <template v-if="showLoginScreen">
         <Login :showLoginScreen=showLoginScreen>  </Login>
-      </div>
+      </template>
+      <template v-else>
+        <el-aside width="200px">Aside</el-aside>
+        <el-main><Dashboard > </Dashboard></el-main>
+      </template>
     </el-container>
   </div>
+
 </template>
 
 
@@ -25,9 +20,10 @@
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import HelloWorld from './components/HelloWorld.vue'
 import Login from './components/Login.vue'
+import Dashboard from './components/Dashboard.vue'
 
 export default {
-    components:{Login},
+    components:{Login, Dashboard},
     data(){
         return{
           showLoginScreen: false,
